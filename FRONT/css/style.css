@@ -18,10 +18,9 @@ header li a:hover {
 #nav .nav-link {
     color: #fff;
 }
-header a:hover {
+/* header a:hover {
     color : #970747 !important;
-}
-
+} */
 #logo {
     width: 120px;
     height: 120px;
@@ -32,24 +31,167 @@ header a:hover {
 .colortxt_district {
   color: #ff6cae;
 }
-#henny-penny-regular {
-  font-family: "Henny Penny", system-ui;
+.spicy-rice-regular {
+  font-family: "Spicy Rice", serif;
   font-weight: 400;
   font-style: normal;
 }
 
+/********************************************** nav **********************************************/
 
-/********************************************** test zoom 1 ************************************************/
-
-/* .zoom {
-    transition: transform .3s; 
-    margin: 0 auto;
+div.blocknav
+{
+	text-align: center;
 }
 
-.zoom:hover {
-    transform: scale(1.1); 
-} */
+div.blocknav a
+{
+    color: #FFF;
+    text-decoration: none;
+    margin: 0px 10px;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+}
+/* Border X get width  */
+div.borderXwidth a:before, div.borderXwidth a:after
+{
+    position: absolute;
+    opacity: 0;
+    width: 0%;
+    height: 2px;
+    content: '';
+    background: #FFF;
+    transition: all 0.3s;
+}
 
+div.borderXwidth a:before
+{
+    left: 0px;
+    top: 0px;
+}
+
+div.borderXwidth a:after
+{
+    right: 0px;
+    bottom: 0px;
+}
+
+div.borderXwidth a:hover:before, div.borderXwidth a:hover:after
+{
+    opacity: 1;
+    width: 100%;
+    color: #FFF;
+}
+/********************************************** bouton categorie page ************************************************/
+
+.button {
+  width: 100px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 24px;
+  text-align: center;
+  color: #fff;
+  transition: all 100ms ease-in-out;
+}
+.button:hover {
+  opacity: .9;
+  -webkit-transition: all 100ms ease;
+  transition: all 100ms ease;
+}
+
+/*animate*/
+
+.btn-animate:hover, 
+.btn-animate:focus {
+  -webkit-transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+  transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+  -webkit-animation: animate 0.5s 1;
+  animation: animate 0.5s 1;
+}
+.btn-animate {
+  background: #11355C;
+  color: #FFF;
+}
+.btn-animate:hover {
+  box-shadow: 6px 6px #47b4d1, 6px 6px #47b4d1;
+}
+.btn-animate:active,
+.btn-animate:active {
+  background: #47b4d1;
+  -webkit-transition-duration: 0;
+  transition-duration: 0;
+  box-shadow: 6px 6px #47b4d1, 6px 6px #47b4d1;
+}
+@keyframes animate {
+  from,to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+  from,to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+}
+@-webkit-keyframes animate {
+  from,to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+  from,to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+}
 
 /********************************************** bandeau ************************************************/
 
@@ -145,7 +287,7 @@ header a:hover {
     transition: .4s;
     cursor: pointer;
     opacity: 75%;
-    border: #fff solid 10px;
+    border: #000 solid 10px;
 
     
 }

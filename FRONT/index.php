@@ -1,41 +1,22 @@
-<?php include 'header.php';?>
-<?php include 'db_connect.php';
+<?php 
+include 'header.php';
+include 'db_connect.php';
+require_once ("DAO.php");
 // ... code de connexion à la base ...
-$requete = $db->query("SELECT * FROM categorie;");
-$requeteSearch = $db->query("SELECT * FROM plat ORDER BY id DESC;");
-$tableau = $requete->fetchAll(PDO::FETCH_OBJ);
-$search = $requeteSearch->fetchAll(PDO::FETCH_OBJ);
-$requete->closeCursor();
-if (isset($_GET['search']) AND !empty($_GET['search'])) {
-    $recherche =htmlspecialchars($_GET['search']);
-    $requeteSearch = $db->query('SELECT libelle FROM plat WHERE libelle LIKE "%'.$recherche.'% "ORDER BY libelle DESC;');
-}
 ?>
 
             <!--------------------------------------- banniere / recherche ----------------------------------------->
             <div class="bandeau img-fluid d-flex align-items-center justify-content-center parallax">            
             <form class="col-8 mx-auto"action="" method="get">
-                <video id="background-video" autoplay loop muted poster="">
-                
+                <video id="background-video" autoplay loop muted poster="">                
                     <source src="https://videos.pexels.com/video-files/3196176/3196176-hd_1920_1080_25fps.mp4" type="video/mp4">
-                  </video>
+                </video>
                     <div class="col-6 text-center  mx-auto">
                         <input name="search" class="form-control" type="search" placeholder="Rechercher..." aria-label="Search">                    
                         <button name="submit" class="btn btn-secondary mt-4" type="submit">Rechercher</button>
                     </div>
                     <section>
                         <?php
-                            if ($requeteSearch->rowCount() > 0) {
-                                while ($plat = $requeteSearch->fetch()) {
-                                    ?>
-                                    <p><?= $plat['libelle']?></p>
-                                    <?php
-                                }
-                            } else {
-                                ?>
-                                <p class="text-center">Aucun résultat trouvé.</p>
-                                <?php
-                            }
                             
                         ?>
                     </section>
@@ -57,21 +38,20 @@ if (isset($_GET['search']) AND !empty($_GET['search'])) {
             <div class="container text-center p-4"> 
                     <div id="menu-cat" class="row col-12">
                         <!---------------------------------------------- boucle bdd ---------------------------------------------->
-                        <?php foreach ($tableau as $cat): ?>                            
+                        <?php                        
+                        $categories = getCatIndex($db); 
+                        foreach ($categories as $cat): ?>                            
                             <div class="col-4 mb-4 text-light">
                                 <h3 class="fs-1"><?= $cat->libelle ?></h3>                      
                                 <a class="nav-link" href="plat.php?id_categorie=<?= $cat->id ?>">
-                                    <div class="position-relative">
-                                                        
+                                    <div class="position-relative">                                                        
                                         <img class="zoomimg" src="images/category/thumbnails/thumbnails<?= $cat->id ?>.png" alt="<?= $cat->libelle ?>">
                                     </div>
                                 </a>                        
                             </div>
                         <?php endforeach; ?>
                         <!---------------------------------------------- fin de boucle bdd ---------------------------------------------->
-
-                    </div>
-                
+                    </div>                
             </div>
 
             <div id="etab_index" class="container text-light text-center">

@@ -8,8 +8,8 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
     <title>The District</title>
@@ -27,23 +27,13 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item p-4 text-center text-light">
-                      <a class="nav-link fs-3" href="index.php">Accueil</a>
-                    </li>
-                    <li class="nav-item p-4 text-center text-light">
-                      <a class="nav-link fs-3" href="categories.php">Catégories</a>
-                    </li> 
-                    <li class="nav-item p-4 text-center text-light">
-                      <a class="nav-link fs-3" href="plats.php">Plats</a>
-                    </li> 
-                    <li class="nav-item p-4 text-center text-light">
-                      <a class="nav-link fs-3" href="contact.php">Contact</a>
-                    </li>
-                    <li class="nav-item p-4 text-center text-light">
-                      <a class="nav-link fs-3" href="commande.php">Panier</a>
-                    </li>
-                  </ul>                
+                  <div class="blocknav green borderXwidth">
+                    <a href="index.php" class="text-light fs-3" >ACCUEIL</a>
+                    <a href="categories.php" class="text-light fs-3" >CATEGORIES</a>
+                    <a href="plats.php" class="text-light fs-3" >PLATS</a>
+                    <a href="contact.php" class="text-light fs-3" >CONTACT</a>
+                    <a href="commande.php" class="text-light fs-3" >COMMANDE</a>
+                  </div>   
               </div>
             </div>
           </nav>
