@@ -11,9 +11,8 @@ $id = $requete->fetchAll(PDO::FETCH_OBJ);
         <?php foreach ($id as $plats): ?>
             <div class="col-5 row m-2 p-2 bg-black mx-auto">
                 <h1><?= $plats->libelle ?></h1>
-                <div class="col-6">
-                    
-                    <img class="w-100" src="images\food\<?= $plats->image ?>" alt=""> 
+                <div class="col-6">                    
+                    <img class="w-100" src="images\food\<?= $plats->image ?>" alt="">
                 </div>
                 <div class="col-6">
                     <p>Description : <?= $plats->description ?></p>
@@ -21,8 +20,6 @@ $id = $requete->fetchAll(PDO::FETCH_OBJ);
                         <a href="commande.php?plat=<?= $plats->id ?>" style="background-color: #970747;" class="btn color_district text-light">Commander</a>
                     </div>
                 </div>
-                
-                
             </div>
         <?php endforeach; ?>
     </div>

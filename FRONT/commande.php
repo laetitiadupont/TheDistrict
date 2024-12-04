@@ -1,63 +1,81 @@
-<?php include 'header.php';?>
+<?php
+include 'header.php';
+include 'db_connect.php';
+require_once("DAO.php");
+?>
 <div class="bg-dark">
-        <!--------------------------------------- banniere / recherche ----------------------------------------->
-        <div class="banniere_plats parallax" ></div>            
-        
+    <!--------------------------------------- banniere / recherche ----------------------------------------->
+    <div class="banniere_plats parallax">
 
-        <!--------------------------------------- produit/s ----------------------------------------->
-        
-        <div class="container col-6 mt-4">
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-2 p-2">
-                    <img src="images/food/thumbnails/burger1.png" class="img-fluid rounded-start" alt="...">
+    </div>
+
+
+    <!--------------------------------------- produit/s ----------------------------------------->
+    <h1 class="text-center fs-1 text-light p-5">C O M M A N D E</h1>
+    <div class="container mx-auto text-light">
+        <?php
+        $id_comm = $_GET['id'] ?? 7;
+        $commande = getCommande($id_comm, $db);
+        foreach ($commande as $plat => $key): ?>
+            <div class="col-8 row m-2 p-2 bg-dark mx-auto rounded border border-4">
+                <h1><?= $key->libelle ?></h1>
+                <div class="col-6">
+                    <img class="w-100" src="images\food\<?= $key->image ?>" alt="">
                 </div>
-                <div class="col-md-6 p-4">
-                    
-                    <h5 class="card-title">Cheeseburger</h5>
-                    <p class="card-text">Savoureux burger et son fromage fondant ! </p>
-                    <form action="/action_page.php">
-                        <label for="quantity">Quantity (maximum 10):</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="10">                        
-                    </form>
-                    
+                <div class="col-6">
+                    <p>Description : <?= $key->description ?></p>
+                    <label for="quantite">Quantité : </label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="10" placeholder="<?= $key->quantite ?>">
                 </div>
             </div>
-          </div>
-        </div>
 
-        
-        <form class="container p-4" action="valid_commande.php" method="post" id="form" onSubmit="return checkForm(this);">
-    <fieldset class="col-md-10 mx-auto">
-        <div class="col row mb-3">
-            <div class="row">
-                <div class="col-md-6 p-4">
-                    <label for="name" class="form-label text-light">Nom :</label>
-                    <input id="name" name="name" type="name" class="form-control" placeholder="Votre Nom..." required>
-                    <p class="errname"></p>
+            <div class="col-8 row mx-auto mt-4">
+                <h2 class="bold">Informations de livraison :</h2>
+                <div class="col-6 pt-4 fs-3">
+                    <p>Date de la commande :</p>
+                    <p>Etat de la commande : </p>
+                    <p>Nom : </p>
+                    <p>Email : </p>
+                    <p>Adresse : </p>
                 </div>
-                <div class="col-md-6 p-4">
-                    <label for="prenom" class="form-label text-light">Prénom :</label>
-                    <input id="prenom" name="prenom" type="prenom" class="form-control" placeholder="Votre Prénom..." required >
-                    <p class="errprenom"></p>
-                </div>
-                <div class="col-md-12 p-4">
-                    <label for="adresse" class="form-label text-light">Email :</label>
-                    <input id="email" name="email" type="email" class="form-control" placeholder="Email..." required >
-                    <p class="erremail"></p>
-                </div>
-                <div class="col-md-12 p-4">
-                    <label for="adress" class="form-label text-light">Votre adresse :</label>
-                    <textarea name="adress" class="form-control" id="adress" rows="3" required></textarea>
-                    <p class="erradress"></p>
+                <div class="col-6 pt-4 fs-3">
+                    <p><?= $key->date_commande ?></p>
+                    <p><?php
+
+                        $a = $key->etat;
+
+                        switch ($a) {
+                            case 'En cours de livraison':
+                                echo '<p class="text-success">' . $a . '...</p>';
+                                break;
+
+                            case 'En préparation':
+                                echo '<p class="text-info">' . $a . '...</p>';
+                                break;
+
+                            case 'Annulée':
+                                echo '<p class="text-danger">' . $a . '</p>';
+                                break;
+                            case 'Livrée':
+                                echo '<p class="text-success">' . $a . '</p>';
+                                break;
+                        }
+
+                        ?></p>
+                    <p><?= $key->nom_client ?></p>
+                    <p><?= $key->email_client ?></p>
+                    <p><?= $key->adresse_client ?></p>
                 </div>
             </div>
+
+        <?php endforeach; ?>
+        <div class="text-center mb-4">
+            <!-- <button type="submit" class="btn btn-primary">Valider ma commande</button> -->
+            <button type="button" class="btn btn-secondary" onclick="window.history.back()">Retour</button>
         </div>
-        <div class=" btn-nav text-center">
-            <input class="btn col-4 text-light border border-light" type="submit" name="submit" id="submit" value="Envoyer">
-        </div>
-    </fieldset>
-</form>
-        
+    </div>
+
+
+
 </div>
-<?php include 'footer.php';?>
+<?php include 'footer.php'; ?>

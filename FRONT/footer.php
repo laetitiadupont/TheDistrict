@@ -1,22 +1,23 @@
-<footer class="footer text-light" style="background-color: #970747;">
+<footer class="footer text-light pt-5" style="background-color: #970747;">
         
         <ul class="nav justify-content-center  align-items-center">
             <li class="nav-item">
                 <a class="nav-link text-light" href="index.php">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="categorie.php">Catégories</a>
-            </li>
-            <li class="nav-item">
-                <a href="index.php">
-                    <img class="" src="images/the_district_brand/logo_transparent.png" width="128" alt="">
-                </a>
-            </li>
+                <a class="nav-link text-light" href="categories.php">Catégories</a>
+            </li>            
             <li class="nav-item">
                 <a class="nav-link text-light" href="plats.php">Plats</a>
             </li>
             <li class="nav-item">
                 <a href="contact.php" class="nav-link text-light">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a href="politique.php" class="nav-link text-light">Politique de confidentialité</a>
+            </li>
+            <li class="nav-item">
+                <a href="mentions.php" class="nav-link text-light">Mentions Légales</a>
             </li>
         </ul>
         <p class="text-center top-2 mt-4">Retrouver nous également sur les réseaux :</p>

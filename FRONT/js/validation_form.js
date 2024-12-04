@@ -6,8 +6,6 @@ const prenomInput = document.getElementById('prenom');
 // On récupère la valeur du champ input email
 const emailInput = document.getElementById('email');
 
- 
-
 // Lancement de la validation 
 form.addEventListener('submit', function(event) {
     let errors = [];

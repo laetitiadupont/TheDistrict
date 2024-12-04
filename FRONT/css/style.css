@@ -194,8 +194,6 @@ div.borderXwidth a:hover:before, div.borderXwidth a:hover:after
 }
 
 /********************************************** bandeau ************************************************/
-
-
 .bandeau {
     /* The image used */
     display: block;
@@ -245,16 +243,13 @@ div.borderXwidth a:hover:before, div.borderXwidth a:hover:after
     background-repeat: no-repeat;
     background-size:100% auto;
 }
-
-
 /********************************************** categorie nav index ************************************************/
-
 #menu-cat h3{
-    z-index: 1;  
+    z-index: 1;
+    position: relative;  
     text-shadow: 4px 4px 4px #000000;
-    left: 30%;
-    top: 40%;
 }
+
 
 #menu-cat a:hover {
     color: #970747 !important;
@@ -280,22 +275,21 @@ div.borderXwidth a:hover:before, div.borderXwidth a:hover:after
     background-size: 100% cover;
   }
 /*********************************************************** zoom ***********************************************************/
-.zoomimg {
-    --f: 1.15; /* the scale factor */
-    
-    clip-path: inset(0);
-    transition: .4s;
-    cursor: pointer;
-    opacity: 75%;
-    border: #000 solid 10px;
 
-    
-}
-.zoomimg:hover {
-  clip-path: inset(calc((1 - 1/var(--f)) * 50%));
-  scale: var(--f);
-  opacity: 50%;
-}
+  .portrait {
+    overflow: hidden;
+    display: inline-block;
+    height: 300px;opacity: 75%;
+  }
+  
+  .portrait img {
+    height: 100%;
+    transition: all .5s;
+  }
+  
+  .portrait:hover img {
+    transform: rotate(10deg) scale(1.4);
+  }
 
 /******************************************************** bouton card ********************************************************/
 
@@ -407,19 +401,10 @@ div.borderXwidth a:hover:before, div.borderXwidth a:hover:after
         background-attachment:scroll;
         background-size: 100% contain;
     }
-    #menu-cat img {
-        width: 200px;
-    }
+
     .bandeau input {
         width: 75%;
     }
-    #menu-cat.col-4 {
-        width: 100%;
-        margin: 0px;
-        padding: 0px;
-    }
-
-
   }
   
   @media screen and (max-width: 600px) {

@@ -10,7 +10,7 @@ require_once ('DAO.php');
 <!--------------------------------------- categorie ----------------------------------------->
         
 <div id="menu-categorie" class="container-fluid mt-4 mx-auto">
-<h1 class="text-light mt-4">Une envie particulière, c'est par ici !</h1>
+<h1 class="text-light p-4">Une envie particulière, c'est par ici !</h1>
 
   <ul class="container nav justify-content-center">
     <?php 
@@ -25,10 +25,9 @@ require_once ('DAO.php');
   </ul>      
 
 <?php
-
-$id= $_GET['id']; 
+$id= $_GET['id'] ?? 4; 
 $categories=getPlatsByCat($id, $db);
-
+echo $categories;
 if (!empty ($id)) : ?>
   <!-------------- boucle affichage des plats ---------------->
   <div class="col row text-light p-4">
