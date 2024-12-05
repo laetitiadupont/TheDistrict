@@ -19,7 +19,7 @@
   session_start();
   ?>
   <header>
-    <!----------------------------------- NAVBAR ----------------------------->
+    <!-- NAVBAR -->
 
     <nav id="nav" class="navbar navbar-expand-lg">
       <div class="container-fluid">
@@ -37,7 +37,7 @@
             <a href="contact.php" class="text-light fs-3">CONTACT</a>
             <a href="commande.php" class="text-light fs-3">COMMANDE</a>
 
-            <!----------------------------------- MODAL CONNEXION ----------------------------->
+            <!-- MODAL CONNEXION -->
 
             <!-- <a href="" class="text-light fs-3" data-bs-toggle="modal" data-bs-target="#exampleModal">SE CONNECTER</a> -->
 
@@ -74,7 +74,7 @@
                 </div>
               </div>
             </div> -->
-            <!----------------------------------- FIN MODAL ----------------------------->
+            <!-- FIN MODAL -->
           </div>
         </div>
       </div>

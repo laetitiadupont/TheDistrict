@@ -32,6 +32,7 @@ require_once("DAO.php");
         <div class="text-center">
             <button type="submit" class="btn btn-primary">Valider mon inscription</button>
             <button type="button" class="btn btn-secondary" onclick="window.history.back()">Retour</button>
+            <!-- TO BOUTON LISTENER JS ON CLICK POUR LE RETOUR DE PAGE -->
         </div>
     </form>
 </div>

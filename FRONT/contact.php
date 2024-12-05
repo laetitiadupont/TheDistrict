@@ -1,27 +1,27 @@
 <?php include 'header.php';?>
 
-            <!--------------------------------------- banniere ----------------------------------------->
+            <!-- banniere -->
             <div class="banniere_contact parallax"></div>        
 
 
-<!--------------------------------------- formulaire ----------------------------------------->
+<!-- formulaire -->
 
-<form class="container p-4" action="formulaire.php" method="post" id="form">
+<form class="container p-4" action="valid_form_contact.js" method="post" id="form">
     <fieldset class="col-md-10 mx-auto">
         <legend class="text-light">Contact</legend>
         <div class="col row mb-3">
             <div class="row">
                 <div class="col-md-6 p-4">
                     <label for="name" class="form-label text-light">Nom :</label>
-                    <input id="name" name="name" type="name" class="form-control" placeholder="Votre Nom..." required>
+                    <input id="name" name="name" type="text" class="form-control" placeholder="Votre Nom..." required>
                 </div>
                 <div class="col-md-6 p-4">
                     <label for="prenom" class="form-label text-light">Prénom :</label>
-                    <input id="prenom" name="prenom" type="prenom" class="form-control" placeholder="Votre Prénom..." required >
+                    <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Votre Prénom..." required>
                 </div>
                 <div class="col-md-12 p-4">
-                    <label for="adresse" class="form-label text-light">Email :</label>
-                    <input id="email" name="email" type="email" class="form-control" placeholder="Email..." required >
+                    <label for="email" class="form-label text-light">Email :</label>
+                    <input id="email" name="email" type="email" class="form-control" placeholder="Email..." required>
                 </div>
                 <div class="col-md-12 p-4">
                     <label for="comment" class="form-label text-light">Votre Message :</label>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class=" btn-nav text-center">
+        <div class="btn-nav text-center">
             <input class="btn col-4 text-light border border-light" type="submit" name="submit" id="submit" value="Envoyer">
         </div>
     </fieldset>

@@ -1,6 +1,5 @@
 <?php
 require_once("db_connect.php");
-session_start();
 
 // afficher les categories populaire sur l'INDEX
 function getCatIndex($db)
@@ -81,15 +80,15 @@ function authenticateUser($db, $email, $password)
 {
     // Échappement des données utilisateur pour éviter les injections SQL
     $email = htmlspecialchars($email);
-    
+
     // Préparation de la requête pour récupérer l'utilisateur en fonction de l'email
     $query = $db->prepare("SELECT * FROM utilisateur WHERE email = :email");
     $query->bindParam(':email', $email);
     $query->execute();
-    
+
     // Récupération du résultat
     $user = $query->fetch(PDO::FETCH_OBJ);
-    
+
     // Vérification de l'existence de l'utilisateur et comparaison du mot de passe
     if ($user && password_verify($password, $user->password)) {
         // Connexion réussie, on démarre la session et on redirige
@@ -109,35 +108,66 @@ function authenticateUser($db, $email, $password)
 //////////////////////////////////////// REQUETES D'INTERROGATION DE LA BDD ////////////////////////////////////////
 
 // 1. Liste des Commande affichant la date, le client, le plat et le prix
-$query = $db->prepare("SELECT comm.id, comm.quantite, comm.date_commande, comm.etat, comm.nom_client, comm.telephone_client, comm.email_client, comm.adresse_client, 
+function getCommandes($db)
+{
+    $query = $db->prepare("SELECT comm.id, comm.quantite, comm.date_commande, comm.etat, comm.nom_client, comm.telephone_client, comm.email_client, comm.adresse_client, 
     plat.id, plat.libelle, plat.description, plat.prix, plat.image
     FROM commande AS comm JOIN plat ON plat.id = comm.id_plat");
-$result = $query->fetchAll(PDO::FETCH_OBJ);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_OBJ);
+    return $result;
+}
 
 // 2. Liste des plats avec leur categories
-$query = $db->prepare("SELECT plat.libelle, cat.libelle FROM plat JOIN categorie AS cat ON plat.id_categorie = cat.id");
-$result = $query->fetchAll(PDO::FETCH_OBJ);
+function getPlatsCat($db)
+{
+    $query = $db->prepare("SELECT plat.libelle, cat.libelle FROM plat JOIN categorie AS cat ON plat.id_categorie = cat.id");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_OBJ);
+    return $result;
+}
 
 // 3. Liste des categories avec le nombre de plats actifs
-$query = $db->prepare("SELECT libelle, COUNT(active) FROM plat WHERE active = 'yes'");
-$result = $query->fetchAll(PDO::FETCH_OBJ);
+function getCatActif($db)
+{
+    $query = $db->prepare("SELECT libelle, COUNT(active) FROM plat WHERE active = 'yes'");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_OBJ);
+    return $result;
+}
 
 // 4. Liste des plats les plus vendus (ordre decroissant)
-$query = $db->prepare("SELECT plat.id AS id_plat, plat.libelle, SUM(comm.quantite) AS total_vendu FROM plat 
+function getPlatsVendu($db)
+{
+    $query = $db->prepare("SELECT plat.id AS id_plat, plat.libelle, SUM(comm.quantite) AS total_vendu FROM plat 
 JOIN      commande AS comm  ON plat.id = comm.id_plat GROUP BY plat.id, plat.libelle ORDER BY total_vendu DESC;");
-$result = $query->fetchAll(PDO::FETCH_OBJ);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_OBJ);
+    return $result;
+}
 
 // 5. Plats les plus remunerateur
-$query = $db->prepare("SELECT plat.id AS id_plat, plat.libelle, SUM(plat.prix * comm.quantite) AS revenu_total FROM plat 
+function getPlatsRemu($db)
+{
+    $query = $db->prepare("SELECT plat.id AS id_plat, plat.libelle, SUM(plat.prix * comm.quantite) AS revenu_total 
+    FROM plat 
 JOIN commande AS comm ON plat.id = comm.id_plat 
 GROUP BY plat.id, plat.libelle 
 ORDER BY revenu_total DESC;");
-$result = $query->fetchAll(PDO::FETCH_OBJ);
-
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_OBJ);
+    return $result;
+}
 // 6. Liste des clients et chiffre d'affaires généré (ordre décroissant)
-$query = $db->prepare("SELECT nom_client, SUM(commande.quantite * plat.prix) AS chiffre_affaires
+function getClientsChiffre($db)
+{
+    $query = $db->prepare("SELECT nom_client, SUM(commande.quantite * plat.prix) AS chiffre_affaires
 FROM commande JOIN plat ON commande.id_plat = plat.id
 GROUP BY nom_client ORDER BY chiffre_affaires DESC");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_OBJ);
+    return $result;
+}
 
 
 ////////////////////////////////////// ECRIRE DES REQUETES DE MODIFICATION DE LA BDD: ////////////////////////////////////////
@@ -146,14 +176,16 @@ GROUP BY nom_client ORDER BY chiffre_affaires DESC");
 function deletPlatsNonActif($db)
 {
     $query = $db->prepare('DELETE FROM plat WHERE active = "No"');
-    $query->execute();
+    $result = $query->execute();
+    return $result;
 }
 
 // 2.Ecrivez une requête permettant de supprimer les commandes avec le statut livré
 function deletPlatsLivre($db)
 {
     $query = $db->prepare('DELETE FROM commande WHERE etat = "Livrée"');
-    $query->execute();
+    $result = $query->execute();
+    return $result;
 }
 
 // 3.Ecrivez un script sql permettant d'ajouter une nouvelle catégorie et un plat dans cette nouvelle catégorie.
@@ -172,12 +204,14 @@ function newPlat($db)
     values (18,'Mousse aux chocolat','Onctueuse mousse aux chocolats',5.00,'mousse.jpg',15,'No')");
     // insert into plat (id, libelle, description, prix, image, id_categorie, active) 
     // values (18,'Mousse aux chocolat','Onctueuse mousse aux chocolats',5.00,'mousse.jpg',15,'No')
-    $query->execute();
+    $result = $query->execute();
+    return $result;
 }
 
 // 4.Ecrivez une requête permettant d'augmenter de 10% le prix des plats de la catégorie 'Pizza'
 function addAugmentation($db)
 {
     $query = $db->prepare('UPDATE plat SET prix = prix * 1.1 WHERE libelle LIKE "Pizza%" ');
-    $query->execute();
+    $result = $query->execute();
+    return $result;
 }

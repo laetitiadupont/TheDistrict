@@ -4,13 +4,13 @@ include 'db_connect.php';
 require_once("DAO.php");
 ?>
 <div class="bg-dark">
-    <!--------------------------------------- banniere / recherche ----------------------------------------->
+    <!-- banniere / recherche -->
     <div class="banniere_plats parallax">
 
     </div>
 
 
-    <!--------------------------------------- produit/s ----------------------------------------->
+    <!-- produit/s -->
     <h1 class="text-center fs-1 text-light p-5">C O M M A N D E</h1>
     <div class="container mx-auto text-light">
         <?php

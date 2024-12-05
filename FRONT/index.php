@@ -5,10 +5,10 @@ require_once("DAO.php");
 
 ?>
 
-<!--------------------------------------- banniere / recherche ----------------------------------------->
+<!-- banniere / recherche -->
 <div class="bandeau img-fluid d-flex align-items-center justify-content-center parallax">
-    <form class="col-8 mx-auto" action="" method="get">
-        <video id="background-video" autoplay loop muted poster="">
+    <form class="col-8 mx-auto" action="search.php" method="get">
+        <video id="background-video" autoplay loop muted>
             <source src="https://videos.pexels.com/video-files/3196176/3196176-hd_1920_1080_25fps.mp4" type="video/mp4">
         </video>
         <div class="col-6 text-center  mx-auto">
@@ -17,7 +17,7 @@ require_once("DAO.php");
         </div>
     </form>
 </div>
-<!--------------------------------------- nav categories index ----------------------------------------->
+<!-- nav categories index -->
 <div class="bg-dark">
     <div class="text-light p-4">
         <div class="container p-4">
@@ -29,7 +29,7 @@ require_once("DAO.php");
     </div>
     <div class="container text-center p-4">
         <div id="menu-cat" class="row col-12">
-            <!---------------------------------------------- boucle bdd ---------------------------------------------->
+            <!-- boucle bdd -->
             <?php
             $categories = getCatIndex($db);
             foreach ($categories as $cat): ?>
@@ -43,7 +43,7 @@ require_once("DAO.php");
                     </a>
                 </div>
             <?php endforeach; ?>
-            <!---------------------------------------------- fin de boucle bdd ---------------------------------------------->
+            <!-- fin de boucle bdd -->
         </div>
     </div>
 
@@ -66,7 +66,7 @@ require_once("DAO.php");
     </div>
 
 
-    <!-------------------------------------- slider ----------------------------------------------->
+    <!-- slider -->
     <div>
         <div class="slider-container slider-1">
             <div class="slider">

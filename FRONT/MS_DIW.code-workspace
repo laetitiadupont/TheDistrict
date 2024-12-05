@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "../../MS_DIW"
+		},
+		{
+			"path": "../../mon_site"
+		},
+		{
+			"path": "../../record"
+		},
+		{
+			"path": "../../projetgamesvr"
+		},
+		{
+			"path": "../../4_POO(Prog_orientee_objet)"
+		},
+		{
+			"path": "../../DWWM_v2-main/BACK_END/BDD"
+		},
+		{
+			"path": "../../POO_FS"
+		},
+		{
+			"path": "../../exo_sessions"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

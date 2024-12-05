@@ -7,7 +7,7 @@ require_once ('DAO.php')
 
   <div class="container-fluid">
     <h1 class="text-light mt-4">Découvrez tous nos plats :</h1>
-      <!---------------------------------------------- boucle bdd  plats ---------------------------------------------->
+      <!-- boucle bdd  plats -->
       <div class="col-12 row  mx-auto">
         <?php 
         $plats = getPlats($db);
@@ -15,7 +15,7 @@ require_once ('DAO.php')
           <div class="col-6 mt-2 mb-2 ">
             <div class="row p-2">
               <div class="col-5 p-0">
-                <img src="images\food\<?= $plat->image ?>" class="mini" alt="">
+                <img src="images/food/<?= $plat->image ?>" class="mini" alt="">
               </div>
               <div class="col-7 bg-black ">
                 <h2 class="text-light pt-2 pb-2"><?= $plat->libelle ?></h2>
@@ -29,7 +29,7 @@ require_once ('DAO.php')
           </div>
         <?php endforeach; ?>
       </div>
-      <!---------------------------------------------- fin de boucle bdd ---------------------------------------------->
+      <!-- fin de boucle bdd -->
   </div>
 
 <?php include 'footer.php'; ?>
